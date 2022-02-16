@@ -6,7 +6,7 @@ from django.utils import timezone
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'created_time', 'modified_time', 'category', 'author']
-    fields = ['title', 'body', 'excerpt', 'category', 'tags']
+    fields = ['title', 'body', 'excerpt', 'category', 'tags'] # Only display these fields when adding posts
 
     # automatically save the user_name in database
     def save_model(self, request, obj, form, change):
