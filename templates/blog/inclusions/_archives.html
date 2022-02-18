@@ -1,0 +1,12 @@
+<div class="widget widget-archives">
+  <h3 class="widget-title">Time-line</h3>
+  <ul>
+    {% for date in date_list %}
+      <li>
+        <a href="#">{{ date.year }} / {{ date.month }} </a>
+      </li>
+    {% empty %}
+      Nothing!
+    {% endfor %}
+  </ul>
+</div>
