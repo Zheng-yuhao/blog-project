@@ -3,7 +3,7 @@
   <ul>
     {% for date in date_list %}
       <li>
-        <a href="#">{{ date.year }} / {{ date.month }} </a>
+        <a href="{% url 'blog:archive' date.year date.month %}">{{ date.year }} / {{ date.month }} </a>
       </li>
     {% empty %}
       Nothing!

@@ -5,6 +5,7 @@ from django.utils.html import strip_tags
 from django.urls import reverse
 import markdown
 
+
 # Create your models here.
 
 
@@ -21,6 +22,7 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
+
 class Post(models.Model):
     title = models.CharField(max_length=30)
     body = models.TextField()
@@ -36,7 +38,6 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag, blank=True)
     # author <= default
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-
 
     def save(self, *args, **kwargs):
         # Reuse the save method to update the created_time field each time
@@ -56,4 +57,8 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('blog:detail', kwargs={'pk':self.pk})
+        return reverse('blog:detail', kwargs={'pk': self.pk})
+
+    class Meta:
+        ordering = ['-created_time']
+        # ordering = ['-created_time', 'title']
